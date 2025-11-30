@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+@theme {
+  --color-mycyan: #22d3ee;
+  --color-myyellow: #facc15;
+  --color-bgdark: #1a1a1a;
+  --color-bgmed: #242424;
+  --color-txt: #e5e5e5;
+  --font-logo: 'Orbitron', sans-serif;; 
+  --shadow-neon-faint: 0 0 1px #22D3EE, 0 0 4px #22D3EE90;
+}
+@layer utilities {
+  .text-glow-faint {
+    text-shadow: 0 0 1.5px #facc15, 0 0 6px #a8890ad6;
+  }
+  .flicker {
+    animation: flickering 0.3s ease-in-out 5;
+  }
+  .glow-faint-yellow {
+    box-shadow: 0 0 1.5px #facc15, 0 0 6px #a8890ad6;;
+  }
+  .glow-faint-cyan {
+    box-shadow: 0 0 1.5px #22d3ee, 0 0 6px #0a8598db;;
+  }
+ 
+}
+@keyframes flickering {
+  0% { opacity: 1}
+  20% { opacity: 0.4}
+  40% { opacity: 0.7}
+  50% { opacity: 0.1}
+  70% { opacity: 0.9}
+  100% { opacity: 1}
+}
+body {
+  background-color: #1a1a1a;
+  
+}
+html {
+  scroll-behavior: smooth;
+}
+ 
