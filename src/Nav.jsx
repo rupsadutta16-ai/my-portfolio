@@ -7,11 +7,31 @@ function Nav() {
         { name: 'Home', icon: FaHome, link: "#home" },
         { name: 'About', icon: FaUser, link: "#about" },
         { name: 'Skills', icon: FaTools, link: "#skills" },
-        { name: 'Projects', icon: FaFolderOpen, link: "#project" },
+        { name: 'Projects', icon: FaFolderOpen, link: "#projects" },
     ];
+    const [activeSection, setActiveSection] = useState("");
+    useEffect(() => {
+        const sections = document.querySelectorAll("[id]");
 
-    // const ricons = [FaEnvelope, FaBars]
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        setActiveSection(entry.target.id);
+                    }
+                });
+            },
+            {
+                rootMargin: "-30% 0px -50% 0px",
+            }
+        );
 
+        sections.forEach((section) => observer.observe(section));
+
+        return () => {
+            sections.forEach((section) => observer.unobserve(section));
+        };
+    }, []);
 
     return (
         <>
@@ -60,9 +80,12 @@ function Nav() {
 
 
                         </div>
-                        <div className=" hidden md:flex justify-evenly space-x-6 relative top-2">
+                        <div className="hidden md:flex justify-evenly space-x-6 relative top-2">
                             {navItems.map((item) => {
                                 const IconComponent = item.icon;
+
+                                const sectionId = item.link.replace("#", "");
+                                const isActive = activeSection === sectionId;
 
                                 return (
                                     <a
@@ -70,28 +93,73 @@ function Nav() {
                                         href={item.link}
                                         className="flex relative top-6 justify-center"
                                     >
-                                        <span className="   w-8 h-8 bg-myyellow/90 rotate-45 flex justify-center items-center transition-transform hover:rotate-0 ease-in-out duration:300 "><span className='transition-transform ease-in-out duration:300 hover:rotate-0 -rotate-45 block'><IconComponent
-                                            className="text-lg text-bgmed"
-                                        /></span></span>
-                                        <span className="w-20 h-7 border-myyellow border-[1px] t-2 justify-center hidden lg:flex glow-faint-yellow hover:bg-myyellow ease-in-out duration:200 ">{item.name}</span>
+                                        <span
+                                            className={`
+                        w-8 h-8 border-1 border-myyellow
+                        flex justify-center items-center 
+                        transition-transform ease-in-out duration-300 
+                        ${isActive ? "rotate-0" : "bg-myyellow/90 rotate-45 hover:rotate-0"}
+                    `}
+                                        >
+                                            <span
+                                                className={`
+                            transition-transform ease-in-out duration-300 
+                            block
+                            ${isActive ? "rotate-0 text-white" : "text-bgmed -rotate-45 hover:rotate-0 hover:text-white"}
+                        `}
+                                            >
+                                                <IconComponent className="text-lg " />
+                                            </span>
+                                        </span>
+
+                                        <span
+                                            className={`
+                        w-20 h-7
+                        border-myyellow border-[1px]
+                        t-2 justify-center hidden lg:flex
+                        ease-in-out duration-200 
+                        ${isActive
+                                                    ? "bg-myyellow text-bgmed glow-faint-yellow"
+                                                    : "hover:bg-myyellow hover:text-bgmed hover:glow-faint-yellow"
+                                                }
+                    `}
+                                        >
+                                            {item.name}
+                                        </span>
                                     </a>
-                                )
+                                );
                             })}
                         </div>
                         < div className=" sm: hidden md:block absolute border-[1px] border-mycyan left-[calc(70%-2px)] rotate-15 origin-bottom h-12 top-[-8px] font-thin shadow-[0_0_4px_1px_#22d3ee50]" ></div>
                     </div>
-                    <div className="pr-9  justify-end items-center sm: hidden md:flex border-[0_0_2px_0] shadow-[0_10px_10px_-8px_#22d3ee50] border-mycyan w-[20%]">
+                    <div className="pr-9 justify-end items-center sm:hidden md:flex border-[0_0_2px_0] shadow-[0_10px_10px_-8px_#22d3ee50] border-mycyan w-[20%]">
                         <div className="absolute border-[1px] border-mycyan left-[calc(80%-2px)] rotate-15 origin-bottom h-18 top-[-8px] font-thin shadow-[0_0_4px_1px_#22d3ee50]"></div>
 
-                        <a href='#contact' className='glow-faint-yellow text-[14px] lg:text-[20px] text-bgdark w-[60%] h-[60%] -rotate-15 bg-myyellow hover:rotate-0 duration-400 ease-in-out' >Contact Me</a>
-
+                        <a
+                            href="#contact"
+                            className={`
+            text-[14px] lg:text-[20px]
+            text-bgdark
+            w-[60%] h-[60%]
+            bg-myyellow
+            glow-faint-yellow
+            flex justify-center items-center
+            ease-in-out duration-400
+            ${activeSection === "contact"
+                                    ? "rotate-0"
+                                    : "-rotate-15 hover:rotate-0"
+                                }
+        `}
+                        >
+                            Contact Me
+                        </a>
                     </div>
 
                 </div>
                 <div className={`fixed top-16 z-50 bg-bgmed right-0 w-50 transform transition-transform duration-300 ease-in-out md:hidden ${isOpen ? "translate-x-0" : "translate-x-full"}`}>
 
                     <ul className=' flex flex-col gap-2'>
-                        {navItems.map(item => {
+                        {navItems.map((item, key) => {
                             const IconComponent = item.icon;
                             return (
                                 <li className='border-1 border-mycyan py-2 pl-4'><a href={item.link} className='flex gap-6'>

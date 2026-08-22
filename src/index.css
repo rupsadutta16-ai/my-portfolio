@@ -6,37 +6,95 @@
   --color-bgdark: #1a1a1a;
   --color-bgmed: #242424;
   --color-txt: #e5e5e5;
-  --font-logo: 'Orbitron', sans-serif;; 
+  --font-logo: 'Orbitron', sans-serif;
+  ;
   --shadow-neon-faint: 0 0 1px #22D3EE, 0 0 4px #22D3EE90;
 }
+
 @layer utilities {
   .text-glow-faint {
     text-shadow: 0 0 1.5px #facc15, 0 0 6px #a8890ad6;
   }
+
   .flicker {
-    animation: flickering 0.3s ease-in-out 5;
+    animation: flickering 2s ease-in-out infinite;
   }
+
   .glow-faint-yellow {
-    box-shadow: 0 0 1.5px #facc15, 0 0 6px #a8890ad6;;
+    box-shadow: 0 0 1.5px #facc15, 0 0 6px #a8890ad6;
+    ;
   }
+
   .glow-faint-cyan {
-    box-shadow: 0 0 1.5px #22d3ee, 0 0 6px #0a8598db;;
+    box-shadow: 0 0 1.5px #22d3ee, 0 0 6px #0a8598db;
+    ;
   }
- 
+
+  .hero-text .word {
+    display: inline-block;
+    transition: transform 0.2s ease;
+  }
+
+  .hero-text .word:hover {
+    transform: translateY(-1px) scale(1.04);
+  }
+
+  .p-text .word {
+    display: inline-block;
+    transition: transform 0.2s ease;
+  }
+
+  .p-text .word:hover {
+    transform: translateY(-0.5px) scale(1.03);
+  }
+
+  .about-card {
+  transform: rotate(var(--rotation));
+  transition:
+    transform 300ms ease-out,
+    z-index 0s;
 }
+
+.about-card:hover {
+  transform: rotate(0deg) translateY(-15px);
+}
+}
+
 @keyframes flickering {
-  0% { opacity: 1}
-  20% { opacity: 0.4}
-  40% { opacity: 0.7}
-  50% { opacity: 0.1}
-  70% { opacity: 0.9}
-  100% { opacity: 1}
+  0% {
+    opacity: 1;
+  }
+
+  2% {
+    opacity: 0.4;
+  }
+
+  4% {
+    opacity: 0.7;
+  }
+
+  6% {
+    opacity: 0.1;
+  }
+
+  8% {
+    opacity: 0.9;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
+
 body {
   background-color: #1a1a1a;
-  
+
 }
+
 html {
   scroll-behavior: smooth;
 }
- 

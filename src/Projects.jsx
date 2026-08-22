@@ -51,7 +51,7 @@ export default function Project() {
   ];
 
   return (
-    <div id="project" className="w-4/5 py-12 px-4 mx-auto">
+    <div id="projects" className="w-4/5 py-12 px-4 mx-auto">
       <div className="w-full mx-auto">
         <h2 className="text-glow-faint text-[30px] lg-[40px] font-bold text-myyellow  w-full text-center mt-36">
               My Journey Through Projects

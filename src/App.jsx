@@ -1,4 +1,3 @@
-
 import Bgimg from './Bgimg';
 import Nav from './Nav';
 import Home from './Home';

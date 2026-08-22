@@ -1,5 +1,5 @@
 import { FaGitAlt, FaGithub, FaFilePowerpoint } from 'react-icons/fa';
-import {  SiJupyter, SiCanva} from 'react-icons/si';
+import {  SiJupyter, SiCanvas} from 'react-icons/si';
 import  { VscVscode } from 'react-icons/vsc'
 
 const Tools = () => {
@@ -9,7 +9,7 @@ const Tools = () => {
     { icon: <VscVscode className="md:text-4xl" />, name: 'Vs Code', row: 1 },
     { icon: <SiJupyter className="md:text-4xl" />, name: 'Jupyter', row: 2 },
     { icon: <FaFilePowerpoint className="md:text-4xl" />, name: 'PPT', row: 2 },
-    { icon: <SiCanva className="md:text-4xl" />, name: 'Canva', row: 2 },
+    { icon: <SiCanvas className="md:text-4xl" />, name: 'Canva', row: 2 },
   ];
 
   const letters = ['T', 'O', 'O', 'L', 'S'];
