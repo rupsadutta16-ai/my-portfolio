@@ -37,7 +37,7 @@ export default function Contact() {
           Contact Me
         </h2>
 
-        <div className="md:w-[70%] w-[85%] mx-auto flex items-center justify-center mt-6 px-4 py-12">
+        <div className="md:w-[70%] w-[80%] mx-auto flex items-center justify-center mt-6 px-4 py-12">
           <div className="flex flex-col md:flex-row gap-16 md:gap-12 items-start md:items-center">
 
             <div className="w-full md:w-1/2 order-1 md:order-2">

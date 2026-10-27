@@ -268,7 +268,7 @@ const LaptopScreenFrame = ({ images, image, name, type, index, isCyanMain }) => 
 
 export default function Projects() {
   return (
-    <section id="projects" className="scroll-mt-24 w-[90%] md:w-[85%] lg:w-[80%] mx-auto py-20">
+    <section id="projects" className="scroll-mt-24 w-[80%] md:w-[85%] lg:w-[80%] mx-auto py-20">
       {/* Section Header */}
       <h2 className="text-glow-faint text-[30px] md:text-[40px] lg:text-[50px] font-bold text-myyellow w-full text-center mt-20 mb-16">
         Projects
@@ -333,8 +333,8 @@ export default function Projects() {
 
                   {/* Description */}
                   <p className="text-txt/80 text-sm sm:text-base leading-relaxed mb-6">
-                    {project.description}
-                  </p>
+                      {project.description}
+                    </p>
 
                   {/* Skills / Technology Chips: Small round pill boxes with subtle borders */}
                   <div className="mb-6">

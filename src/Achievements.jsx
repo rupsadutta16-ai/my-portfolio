@@ -123,8 +123,21 @@ export const CERTIFICATES_DATA = [
  * Certificate Card Component
  * Displays certificate image on top, and below the image ONLY the certificate name.
  */
+/**
+ * Normalises a 'public/xxx' path to '/xxx' so it works in both
+ * local dev (Vite serves public/ at root) and Vercel production.
+ */
+const normalizePublicPath = (src) => {
+  if (!src) return '';
+  if (typeof src === 'string' && src.startsWith('public/')) {
+    return '/' + src.slice(7);
+  }
+  return src;
+};
+
 const CertificateCard = ({ cert, index }) => {
   const isCyan = index % 2 === 0;
+  const imageSrc = normalizePublicPath(cert.image);
 
   return (
     <div
@@ -136,9 +149,9 @@ const CertificateCard = ({ cert, index }) => {
     >
       {/* Certificate Image or Intentional Cyberpunk Placeholder */}
       <div className="w-full h-44 sm:h-48 relative overflow-hidden bg-bgdark/90 flex items-center justify-center border-b border-txt/10">
-        {cert.image ? (
+        {imageSrc ? (
           <img
-            src={cert.image}
+            src={imageSrc}
             alt={cert.title}
             className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
             loading="lazy"
@@ -205,7 +218,7 @@ export default function Achievements() {
   return (
     <section
       id="achievements"
-      className="scroll-mt-24 w-[90%] md:w-[85%] lg:w-[80%] mx-auto py-20"
+      className="scroll-mt-24 w-[80%] md:w-[85%] lg:w-[80%] mx-auto py-20"
     >
       
 

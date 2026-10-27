@@ -132,7 +132,7 @@ function Nav() {
                         </div>
                         < div className=" sm: hidden md:block absolute border-[1px] border-mycyan left-[calc(70%-2px)] rotate-15 origin-bottom h-12 top-[-8px] font-thin shadow-[0_0_4px_1px_#22d3ee50]" ></div>
                     </div>
-                    <div className="pr-9 justify-end items-center sm:hidden md:flex border-[0_0_2px_0] shadow-[0_10px_10px_-8px_#22d3ee50] border-mycyan w-[20%]">
+                    <div className="pr-9 justify-end items-center hidden md:flex border-[0_0_2px_0] shadow-[0_10px_10px_-8px_#22d3ee50] border-mycyan w-[20%]">
                         <div className="absolute border-[1px] border-mycyan left-[calc(80%-2px)] rotate-15 origin-bottom h-18 top-[-8px] font-thin shadow-[0_0_4px_1px_#22d3ee50]"></div>
 
                         <a

@@ -104,7 +104,7 @@ const softSkillsCategory = {
 
 const Skills = () => {
   return (
-    <section id="skills" className="scroll-mt-24 w-[90%] md:w-[85%] lg:w-[80%] mx-auto py-16">
+    <section id="skills" className="scroll-mt-24 w-[80%] md:w-[85%] lg:w-[80%] mx-auto py-16">
       {/* Section Header */}
       <h2 className="text-glow-faint text-[30px] md:text-[40px] lg:text-[50px] font-bold text-myyellow w-full text-center mt-20 mb-12">
         Skills
