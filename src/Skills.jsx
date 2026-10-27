@@ -1,81 +1,251 @@
-import { FaHtml5, FaCss3Alt, FaJsSquare, FaReact } from 'react-icons/fa';
-import { SiTailwindcss } from 'react-icons/si';
-import Programming from './Programming';
-import Libraries from './Libraries';
-import Tools from './Tools';
+import React from 'react';
+import { 
+  FaCode, 
+  FaBrain, 
+  FaLaptopCode, 
+  FaServer, 
+  FaDatabase, 
+  FaCube, 
+  FaTools, 
+  FaCloudUploadAlt, 
+  FaUserFriends 
+} from 'react-icons/fa';
+
+const technicalCategories = [
+  {
+    id: 'programming-languages',
+    title: 'Programming Languages',
+    icon: FaCode,
+    accent: 'cyan',
+    skills: ['Python', 'C', 'C++', 'JavaScript'],
+  },
+  {
+    id: 'frontend-dev',
+    title: 'Frontend Development',
+    icon: FaLaptopCode,
+    accent: 'yellow',
+    skills: ['HTML', 'CSS', 'React.js', 'Tailwind CSS'],
+  },
+  {
+    id: 'backend-dev',
+    title: 'Backend Development',
+    icon: FaServer,
+    accent: 'cyan',
+    skills: ['Node.js', 'Express.js', 'FastAPI', 'REST APIs', 'External API Integration'],
+  },
+  {
+    id: 'data-science-ml',
+    title: 'Data Science & ML',
+    icon: FaBrain,
+    accent: 'yellow',
+    isWide: true, // 2-columns wide so other cards on this row don't stretch unnecessarily
+    skills: [
+      'Pandas',
+      'NumPy',
+      'Matplotlib',
+      'Seaborn',
+      'Scikit-learn',
+      'Data Preprocessing',
+      'Exploratory Data Analysis',
+      'ML Algorithms',
+    ],
+  },
+  {
+    id: 'databases',
+    title: 'Databases',
+    icon: FaDatabase,
+    accent: 'cyan',
+    skills: ['MongoDB', 'PostgreSQL', 'SQL'],
+  },
+  {
+    id: 'blockchain-web3',
+    title: 'Blockchain & Web3',
+    icon: FaCube,
+    accent: 'yellow',
+    skills: [
+      'Solidity',
+      'ethers.js',
+      'Thirdweb',
+      'Hardhat',
+      'Polygon',
+      'MetaMask',
+      'IPFS',
+    ],
+  },
+  {
+    id: 'tools',
+    title: 'Tools',
+    icon: FaTools,
+    accent: 'cyan',
+    skills: ['Git', 'GitHub', 'VS Code', 'Antigravity', 'Claude'],
+  },
+  {
+    id: 'deployment-hosting',
+    title: 'Deployment & Hosting',
+    icon: FaCloudUploadAlt,
+    accent: 'yellow',
+    skills: ['Render', 'Vercel', 'Cloudinary'],
+  },
+];
+
+const softSkillsCategory = {
+  id: 'soft-skills',
+  title: 'Soft Skills',
+  icon: FaUserFriends,
+  accent: 'cyan',
+  skills: [
+    'Leadership',
+    'Task Coordination',
+    'Team Collaboration',
+    'Problem-Solving',
+    'Adaptability',
+  ],
+};
 
 const Skills = () => {
-  const skills = [
-    { icon: <FaHtml5 className="md:text-4xl" />, name: 'HTML', row: 1 },
-    { icon: <FaCss3Alt className="md:text-4xl" />, name: 'CSS', row: 1 },
-    { icon: <FaJsSquare className="md:text-4xl" />, name: 'JavaScript', row: 1 },
-    { icon: <FaReact className="md:text-4xl" />, name: 'React.js', row: 2 },
-    { icon: <SiTailwindcss className="md:text-4xl" />, name: 'Tailwind CSS', row: 2 },
-  ];
-
-  const letters = ['F', 'R', 'O', 'N', 'T', 'E', 'N', 'D'];
-
   return (
+    <section id="skills" className="scroll-mt-24 w-[90%] md:w-[85%] lg:w-[80%] mx-auto py-16">
+      {/* Section Header */}
+      <h2 className="text-glow-faint text-[30px] md:text-[40px] lg:text-[50px] font-bold text-myyellow w-full text-center mt-20 mb-12">
+        Skills
+      </h2>
 
-    <>
-      <section id="skills" className='scroll-mt-24'>
-        <h2 className="text-glow-faint text-[40px] lg-[50px] font-bold text-myyellow  w-full text-center mt-36">
-          Skills
-        </h2>
-        <div className="w-4/5 mx-auto flex-col md:flex-row flex items-center justify-between gap-12 py-8">
-          <div className="flex flex-row md:flex-col -mb-5 md:mb-0 gap-2">
-            {letters.map((letter, index) => (
-              <div
-                key={index}
-                className="glow-faint-cyan md:w-6 md:h-6 w-5 h-5 bg-mycyan rotate-45 flex items-center justify-center"
-              >
-                <span className="-rotate-45 text-bgdark font-[800] md:text-lg text-sm">
-                  {letter}
-                </span>
+      {/* Technical Skills Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {technicalCategories.map((category) => {
+          const Icon = category.icon;
+          const isCyan = category.accent === 'cyan';
+          const isWide = Boolean(category.isWide);
+
+          return (
+            <div
+              key={category.id}
+              className={`bg-bgmed/30 backdrop-blur-md p-6 flex flex-col justify-between transition-transform duration-300 hover:-translate-y-1 ${
+                isWide ? 'md:col-span-2 lg:col-span-2' : ''
+              } ${
+                isCyan
+                  ? 'border-2 border-mycyan glow-faint-cyan'
+                  : 'border-2 border-myyellow glow-faint-yellow'
+              }`}
+            >
+              {/* Card Header with Diamond Icon */}
+              <div className="flex items-center gap-4 mb-4 pb-3 border-b border-txt/10">
+                <div
+                  className={`w-9 h-9 rotate-45 flex items-center justify-center shrink-0 ${
+                    isCyan
+                      ? 'bg-mycyan glow-faint-cyan text-bgdark'
+                      : 'bg-myyellow glow-faint-yellow text-bgdark'
+                  }`}
+                >
+                  <Icon className="-rotate-45 text-base" />
+                </div>
+                <h3 className="text-base sm:text-lg font-bold text-txt">
+                  {category.title}
+                </h3>
               </div>
-            ))}
-          </div>
-          <div className="flex-1 border-2 h-64 w-full md:w-auto mx-10 border-mycyan glow-faint-cyan bg-bgmed bg-opacity-30 px-8 py-6 flex items-center justify-center">
-            <div className="flex flex-col gap-6">
 
-              <div className="flex gap-8 justify-center">
-                {skills.filter(skill => skill.row === 1).map((skill, index) => (
-                  <div key={index} className="flex items-center gap-0">
-
-                    <div className="w-6 glow-faint-yellow text-xl h-6 md:w-14 md:h-14 bg-myyellow rotate-45 flex items-center justify-center relative z-5">
-                      <div className="-rotate-45 text-bgdark">
-                        {skill.icon}
-                      </div>
-                    </div>
-                    <div className="border-1 border-myyellow glow-faint-yellow md:border-2 md:px-4 md:py-2 px-2 py-1/2 -ml-2 z-0">
-                      <span className="text-white text-sm">{skill.name}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="flex gap-8 justify-center">
-                {skills.filter(skill => skill.row === 2).map((skill, index) => (
-                  <div key={index} className="flex items-center gap-0">
-                    <div className="w-6 text-xl h-6 md:w-14 md:h-14 bg-myyellow rotate-45 flex items-center justify-center relative z-5">
-                      <div className="-rotate-45 text-bgdark">
-                        {skill.icon}
-                      </div>
-                    </div>
-                    <div className="border-1 border-myyellow md:border-2 md:px-4 md:py-2 px-2 py-1/2 -ml-2 z-0">
-                      <span className="text-white text-sm">{skill.name}</span>
-                    </div>
-                  </div>
+              {/* Skill Chips: Small rounded pill boxes with non-prominent borders */}
+              <div className="flex flex-wrap gap-2">
+                {category.skills.map((skill) => (
+                  <span
+                    key={skill}
+                    className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono transition-colors duration-200 cursor-default select-none bg-bgdark/80 text-txt/90 border ${
+                      isCyan
+                        ? 'border-white/10 hover:border-mycyan/50 hover:text-mycyan'
+                        : 'border-white/10 hover:border-myyellow/50 hover:text-myyellow'
+                    }`}
+                  >
+                    <span
+                      className={`w-1.5 h-1.5 rounded-full shrink-0 ${
+                        isCyan ? 'bg-mycyan/80' : 'bg-myyellow/80'
+                      }`}
+                    />
+                    {skill}
+                  </span>
                 ))}
               </div>
             </div>
+          );
+        })}
+      </div>
+
+      {/* Soft Skills Section */}
+      <div className="mt-10">
+        <div className="border-2 border-mycyan glow-faint-cyan bg-bgmed/30 backdrop-blur-md p-6 sm:p-8 overflow-hidden">
+          {/* Two-column layout: left = title/meta, right = scattered skill pills */}
+          <div className="flex flex-col md:flex-row gap-6">
+
+            {/* LEFT: Title & Description */}
+            <div className="md:w-1/2 flex items-start gap-4 shrink-0">
+              <div className="w-10 h-10 rotate-45 flex items-center justify-center shrink-0 bg-mycyan glow-faint-cyan text-bgdark mt-1">
+                <softSkillsCategory.icon className="-rotate-45 text-lg" />
+              </div>
+              <div>
+                <div className="flex items-center gap-3 flex-wrap">
+                  <h3 className="text-lg sm:text-xl font-bold text-txt">
+                    {softSkillsCategory.title}
+                  </h3>
+                  <span className="border border-myyellow glow-faint-yellow px-2 py-0.5 text-[11px] font-bold text-myyellow bg-bgdark">
+                    SOFT SKILLS
+                  </span>
+                </div>
+                <p className="text-xs sm:text-sm text-txt/70 mt-4">
+                  Core competencies in collaboration, leadership, and analytical execution
+                </p>
+              </div>
+            </div>
+
+            {/* RIGHT: Scattered floating skill pills */}
+            <div className="md:w-1/2 relative min-h-[140px] flex-1">
+              {/* Subtle radial glow background */}
+              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_60%_50%,rgba(34,211,238,0.05),transparent_75%)] pointer-events-none" />
+
+              {/* Each pill placed at a custom absolute position with its own rotation */}
+              <span
+                style={{ top: '8%', left: '5%', transform: 'rotate(-12deg)' }}
+                className="absolute inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-mono border border-white/10 bg-bgdark/80 text-txt/90 hover:border-myyellow/50 hover:text-myyellow transition-colors duration-200 cursor-default select-none shadow-[0_0_8px_rgba(250,204,21,0.08)]"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-myyellow/80 shrink-0" />
+                Leadership
+              </span>
+
+              <span
+                style={{ top: '0%', left: '52%', transform: 'rotate(6deg)' }}
+                className="absolute inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-mono border border-white/10 bg-bgdark/80 text-txt/90 hover:border-mycyan/50 hover:text-mycyan transition-colors duration-200 cursor-default select-none shadow-[0_0_8px_rgba(34,211,238,0.08)]"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-mycyan/80 shrink-0" />
+                Task Coordination
+              </span>
+
+              <span
+                style={{ top: '38%', left: '30%', transform: 'rotate(-5deg)' }}
+                className="absolute inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-mono border border-white/10 bg-bgdark/80 text-txt/90 hover:border-myyellow/50 hover:text-myyellow transition-colors duration-200 cursor-default select-none shadow-[0_0_8px_rgba(250,204,21,0.08)]"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-myyellow/80 shrink-0" />
+                Team Collaboration
+              </span>
+
+              <span
+                style={{ bottom: '10%', left: '8%', transform: 'rotate(10deg)' }}
+                className="absolute inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-mono border border-white/10 bg-bgdark/80 text-txt/90 hover:border-mycyan/50 hover:text-mycyan transition-colors duration-200 cursor-default select-none shadow-[0_0_8px_rgba(34,211,238,0.08)]"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-mycyan/80 shrink-0" />
+                Problem-Solving
+              </span>
+
+              <span
+                style={{ bottom: '4%', right: '4%', transform: 'rotate(-8deg)' }}
+                className="absolute inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-mono border border-white/10 bg-bgdark/80 text-txt/90 hover:border-myyellow/50 hover:text-myyellow transition-colors duration-200 cursor-default select-none shadow-[0_0_8px_rgba(250,204,21,0.08)]"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-myyellow/80 shrink-0" />
+                Adaptability
+              </span>
+            </div>
+
           </div>
         </div>
-        <Programming />
-        <Libraries />
-        <Tools />
-      </section>
-    </>
+      </div>
+    </section>
   );
 };
 

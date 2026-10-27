@@ -4,6 +4,7 @@ import Home from './Home';
 import About from './About';
 import Skills from './Skills';
 import Projects from './Projects';
+import Achievements from './Achievements';
 import Contact from './Contact';
 import Footer from './Footer'
 import { useEffect } from 'react';
@@ -19,6 +20,7 @@ function App() {
           <About />
           <Skills />
           <Projects />
+          <Achievements />
           <Contact />
           <Footer />
       </div>
